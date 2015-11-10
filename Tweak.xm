@@ -1,4 +1,4 @@
-#import <LSStatusBarItem.h>
+#import "LSStatusBarItem.h"
 
 LSStatusBarItem* sbItem = nil;
 
@@ -6,8 +6,8 @@ LSStatusBarItem* sbItem = nil;
 
 - (void)applicationDidFinishLaunching:(id)arg1 {
 	%orig;
-	sbItem = [[NSClassFromString(@"LSStatusBarItem") alloc] initWithIdentifier:@"com.sassoty.bulb" alignment:StatusBarAlignmentRight];
-	sbItem.imageName = @"Bulb";
+	sbItem = [[NSClassFromString(@"LSStatusBarItem") alloc] initWithIdentifier:@"com.lizynz.ccstyle" alignment:StatusBarAlignmentRight];
+	sbItem.imageName = @"Flash";
 	sbItem.visible = NO;
 }
 
