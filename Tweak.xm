@@ -31,22 +31,23 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook SBCCQuickLaunchSectionController
+%hook SBCCFlashlightSetting ///1
 
-- (void)_enableTorch:(BOOL)state {
+-(BOOL)_enableTorch:(BOOL)state {
 	%orig;
 	if(state) {
 		sbItem.visible = YES;
 	} else {
 		sbItem.visible = NO;
 	}
+	return %orig;
 }
 
 %end
 
 %hook AVCaptureDevice
 
-- (void)setTorchMode:(BOOL)state {
+- (void)setTorchMode:(long long)state {
 	%orig;
 	if(state) {
 		sbItem.visible = YES;
@@ -55,7 +56,7 @@ LSStatusBarItem* sbItem = nil;
 	}
 }
 
-- (void)setFlashMode:(BOOL)state {
+- (void)setFlashMode:(long long)state {
 	%orig;
 	if(state) {
 		sbItem.visible = YES;
@@ -71,7 +72,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AXVisualAlertSBCCQuickLaunchSectionController
+%hook AXVisualAlertSBCCFlashlightSetting
 
 - (void)setFlashlightOn:(BOOL)state {
 	%orig;

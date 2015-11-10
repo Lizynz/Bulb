@@ -1,4 +1,8 @@
-export ARCHS = arm64 armv7 armv7s
+ARCHS = armv7 armv7s arm64
+
+TARGET = iphone:clang:latest:9.1
+
+export ADDITIONAL_LDFLAGS = -Wl,-segalign,4000
 
 include theos/makefiles/common.mk
 
