@@ -1,6 +1,6 @@
 Package: com.sassoty.bulb
 Name: Bulb
-Depends: mobilesubstrate, libstatusbar
+Depends: mobilesubstrate
 Version: 2
 Architecture: iphoneos-arm
 Description: When flashlight is on, show status bar icon

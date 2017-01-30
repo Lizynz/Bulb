@@ -31,7 +31,21 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook SBCCFlashlightSetting ///1
+%hook SBCCFlashlightSetting // iOS 8 - 9.3.3
+
+-(BOOL)_enableTorch:(BOOL)state {
+	%orig;
+	if(state) {
+		sbItem.visible = YES;
+	} else {
+		sbItem.visible = NO;
+	}
+	return %orig;
+}
+
+%end
+
+%hook CCUIFlashlightSetting // iOS 10.2
 
 -(BOOL)_enableTorch:(BOOL)state {
 	%orig;
@@ -72,7 +86,20 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AXVisualAlertSBCCFlashlightSetting
+%hook AXVisualAlertSBCCFlashlightSetting // iOS 8 - 9.3.3
+
+- (void)setFlashlightOn:(BOOL)state {
+	%orig;
+	if(state) {
+		sbItem.visible = YES;
+	} else {
+		sbItem.visible = NO;
+	}
+}
+
+%end
+
+%hook AXVisualAlertCCUIFlashlightSetting // iOS 10.2
 
 - (void)setFlashlightOn:(BOOL)state {
 	%orig;
