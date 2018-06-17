@@ -13,7 +13,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AVFlashlight
+%hook AVFlashlight //iOS 8.x ~ iOS 11.x
 
 - (BOOL)setFlashlightLevel:(float)state withError:(id *)arg2 {
 	if(state > 0.0) {
@@ -45,7 +45,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook CCUIFlashlightSetting // iOS 10.2
+%hook CCUIFlashlightSetting // iOS 10.x
 
 -(BOOL)_enableTorch:(BOOL)state {
 	%orig;
@@ -59,7 +59,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AVCaptureDevice
+%hook AVCaptureDevice //iOS 8.x ~ iOS 11.x
 
 - (void)setTorchMode:(long long)state {
 	%orig;
@@ -99,7 +99,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AXVisualAlertCCUIFlashlightSetting // iOS 10.2
+%hook AXVisualAlertCCUIFlashlightSetting // iOS 10.x
 
 - (void)setFlashlightOn:(BOOL)state {
 	%orig;
@@ -108,6 +108,20 @@ LSStatusBarItem* sbItem = nil;
 	} else {
 		sbItem.visible = NO;
 	}
+}
+
+%end
+
+%hook AXVisualAlertSBUIFlashlightController // iOS 11.x
+
+- (void)_turnPowerOff {
+	%orig;
+	sbItem.visible = NO;
+}
+
+- (void)_turnPowerOn {
+	%orig;
+	sbItem.visible = YES;
 }
 
 %end
