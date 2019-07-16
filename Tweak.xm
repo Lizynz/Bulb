@@ -13,7 +13,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AVFlashlight //iOS 8.x ~ iOS 11.x
+%hook AVFlashlight //iOS 8.x ~ iOS 12.x
 
 - (BOOL)setFlashlightLevel:(float)state withError:(id *)arg2 {
 	if(state > 0.0) {
@@ -59,7 +59,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AVCaptureDevice //iOS 8.x ~ iOS 11.x
+%hook AVCaptureDevice //iOS 8.x ~ iOS 12.x
 
 - (void)setTorchMode:(long long)state {
 	%orig;
@@ -112,7 +112,7 @@ LSStatusBarItem* sbItem = nil;
 
 %end
 
-%hook AXVisualAlertSBUIFlashlightController // iOS 11.x
+%hook AXVisualAlertSBUIFlashlightController // iOS 11.x - iOS 12.x
 
 - (void)_turnPowerOff {
 	%orig;
